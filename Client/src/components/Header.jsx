@@ -154,7 +154,8 @@ const Header = () => {
               <span className="count">0</span>
             </button> */}
 
-            <a className="action-btn" href="/cart">
+            <a className="action-btn" href="/address">
+            {/* <a className="action-btn" href="/cart"> */}
               <ion-icon name="bag-handle-outline" />
               <span className="count">{totalQuantities}</span>
             </a>

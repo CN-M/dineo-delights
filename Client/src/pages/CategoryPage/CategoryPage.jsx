@@ -71,10 +71,7 @@ const CategoryPage = () => {
                 isLoading
                   ? <Loading />
                   : (
-                    <ProductGrid
-                      heading={`${path}`}
-                      productData={categoryData}
-                    />
+                    <ProductGrid heading={`${path}`} productData={categoryData}/>
                   )
               }
             </div>

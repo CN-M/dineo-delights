@@ -10,6 +10,18 @@ const AddressForm = ({ item }) => {
   const [pickUp, setPickUp] = useState(true);
   // const [shipping, setShipping] = useState(0);
 
+  // const [formData, setFormData] = {
+  //   RecipientName: '',
+  //   RecipientPhoneNumber: '',
+  //   RecipientEmailAddress: '',
+  //   StreetAddress: '',
+  //   ComplexOrBuilding: '',
+  //   Suburb: '',
+  //   CityOrTown: '',
+  //   Province: '',
+  //   PostalCode: '',
+  // }
+
   let shipping = 0;
   const {
     totalPrice, cartItems, setShowCart,
@@ -24,6 +36,14 @@ const AddressForm = ({ item }) => {
     setDelivery((current) => !current);
     setPickUp((current) => !current);
   };
+
+  // const handleForm = async (e) => {
+  //   const { name, value } = e.target
+  //   setFormData({
+  //     ...formData,
+  //     [name]: value,
+  //   })
+  // }
 
   const deliveryClasses = `method ${delivery ? 'selected' : ''} `;
   const pickUpClasses = `method ${pickUp ? 'selected' : ''} `;
@@ -45,9 +65,9 @@ const AddressForm = ({ item }) => {
           }
           {
             pickUp
-              ? <h2 className="section-heading">Pickup Details</h2>
+              // ? <h2 className="section-heading">Pickup Details</h2>
+              ? <h2 className="section-heading">Pickup Details - Turf Only</h2>
               : <div />
-              // ? <h2 className="section-heading">Pickup Details - Near Turf Only</h2>
           }
           <div className="payment-form">
             <div className="payment-method">
@@ -120,15 +140,6 @@ const AddressForm = ({ item }) => {
                           <option value="audi">KwaZulu-Natal</option>
                           <option value="audi">Mpumalanga</option>
                         </select>
-                        {/* <input
-                      type="number"
-                      name="day"
-                      id="expire-date"
-                      placeholder="31"
-                      min="1"
-                      max="31"
-                      className="input-default"
-                    /> */}
                       </div>
                     </div>
                     <div className="cvv">
@@ -163,14 +174,10 @@ const AddressForm = ({ item }) => {
               : <div />
             }
           </div>
-          <a href="/cart" className="btn btn-primaryy" onClick={handleCheckout}>
+          <a href="/cart" className="btn btn-primaryy">
             <b>Continue</b>
-            {/* <span id="payAmount" /> */}
           </a>
         </section>
-
-        {/* <!--- cart section --> */}
-
         <section className="cart-sec">
           <div className="cart-item-boxx">
             <h2 className="section-heading">Order Summary</h2>
@@ -199,32 +206,13 @@ const AddressForm = ({ item }) => {
           </div>
           <div className="wrapper">
             <div className="discount-token">
-              {/* <label
-                htmlFor="discount-token"
-                className="label-default"
-              >Gift card/Discount code
-              </label>
-              <div className="wrapper-flex">
-                <input
-                  type="text"
-                  name="discount-token"
-                  id="discount-token"
-                  className="input-default"
-                />
-                <button className="btn btn-outline">Apply</button>
-              </div> */}
             </div>
             <div className="amount">
               <div className="subtotal">
                 <span>Subtotal</span> <span>R <span id="subtotal">{totalPrice}</span></span>
-                {/* <span>Subtotal</span> <span>R <span id="subtotal">2.05</span></span> */}
               </div>
-              {/* <div className="tax">
-                <span>Tax</span> <span>R <span id="tax">0.10</span></span>
-              </div> */}
               <div className="shipping">
                 <span>Shipping</span> <span>R <span id="shipping">{shipping}</span></span>
-                {/* <span>Shipping</span> <span>R <span id="shipping">0.00</span></span> */}
               </div>
               <div className="total">
                 <span>Total</span> <span>R <span id="total">{totalPrice + shipping}</span></span>
