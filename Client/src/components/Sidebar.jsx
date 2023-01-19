@@ -41,8 +41,6 @@ const Sidebar = () => {
       <div className="sidebar-category">
         <div className="sidebar-top">
           <h2 className="sidebar-title">Categories</h2>
-          {/* <button className="sidebar-close-btn" onClick={SidebarHandler}
-          data-mobile-menu-close-btn> */}
           <button className="sidebar-close-btn" onClick={handleMobileSidebar} data-mobile-menu-close-btn>
             <ion-icon name="close-outline" />
           </button>

@@ -13,19 +13,12 @@ const CategoryPage = () => {
   const path = window.location.pathname.split('/')[2];
   const [categoryData, setCategoryData] = useState([]);
 
-  console.log(path);
-  console.log('path');
-
   const {
     isLoading, setIsLoading, isOverlayActive,
     isSideBarActive, handleMobileSidebar,
   } = useStateContext();
 
   useEffect(() => {
-    // const QUERY = `*[_type == "product" && category->categorySlug.current == "${path}"] {
-    // const QUERY = `*[_type == "category" &&
-    // const QUERY = `*[_type == "product" && category[]->categorySlug.current)[@ in ["${path}"]]]
-    // const QUERY = `*[category[]->categorySlug.current[@ in ["${path}"]]]`;
     const QUERY = `*[count((category[]->categorySlug.current)[@ in ["${path}"]]) > 0] {
       ...,
       category[]-> {
@@ -33,18 +26,11 @@ const CategoryPage = () => {
         categorySlug
       }
     }`;
-    // const QUERY = `*[_type == "product" && category->categorySlug.current == "${path}"] {
-    //   ...,
-    //   category[]-> {
-    //     categoryName,
-    //       categorySlug
-    //   },
-    // }
-    // `;
 
     const getData = async () => {
       const response = await client.fetch(QUERY);
       setCategoryData(response);
+      console.log(response[0].category[0])
       setIsLoading(false);
     };
 

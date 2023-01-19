@@ -2,9 +2,7 @@ import { urlFor } from '../../lib/Client';
 import { useStateContext } from '../../context/StateContext';
 
 const MainProduct = ({ product }) => {
-  const {
-    decQty, incQty, qty, onAdd, setShowCart,
-  } = useStateContext();
+  const { onAdd } = useStateContext();
 
   const {
     name, price, ogPrice, slug, stars, sale, isNew, imgSrc,

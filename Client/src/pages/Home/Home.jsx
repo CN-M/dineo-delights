@@ -18,9 +18,6 @@ import { client } from '../../lib/Client';
 
 const Home = () => {
   const [productData, setProductData] = useState([]);
-
-  console.log('Yes');
-
   const { isOverlayActive, showCart } = useStateContext();
 
   useEffect(() => {

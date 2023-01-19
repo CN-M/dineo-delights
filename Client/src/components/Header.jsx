@@ -1,4 +1,3 @@
-/* eslint-disable no-plusplus */
 import { useEffect, useState } from 'react';
 import { useStateContext } from '../context/StateContext';
 import logo from '../assets/images/logo/vite.svg';
@@ -6,9 +5,8 @@ import logo from '../assets/images/logo/vite.svg';
 import PanelListItem from './A_SubComponents/PanelListItem';
 import DropDownItem from './A_SubComponents/DropDownItem';
 import SubMenuCategory from './A_SubComponents/SubMenuCategory';
-// import Cart from './A_SubComponents/Cart/Cart';
 
-import { client, urlFor } from '../lib/Client';
+import { client } from '../lib/Client';
 import ShoppingCart from './A_SubComponents/ShoppingCart/ShoppingCart';
 
 const Header = () => {
@@ -60,10 +58,9 @@ const Header = () => {
   }, []);
 
   const {
-    decQty, incQty, qty, onAdd, setShowCart,
     showCart, totalQuantities,
     handleMobileSidebar, handleMobileMenu,
-    handleCart, isCartActive,
+    handleCart,
     isMobileActive,
 
   } = useStateContext();
@@ -72,9 +69,6 @@ const Header = () => {
 
   const mobileActive = isMobileActive ? 'active' : '';
   const mobileClasses = `mobile-navigation-menu has-scrollbar ${mobileActive}`;
-
-  // const cartActive = isCartActive ? 'active' : '';
-  // const cartClasses = `mobile-navigation-menu has-scrollbar ${cartActive}`;
 
   const handleAccordian = (e) => {
     const sibling = e.target.nextElementSibling.classList;

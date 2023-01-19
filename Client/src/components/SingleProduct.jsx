@@ -1,4 +1,3 @@
-// import './SingleProduct.scss';
 import SingleFeature from './A_SubComponents/SingleFeature';
 
 const ProductSingleFeature = ({ product }) => (

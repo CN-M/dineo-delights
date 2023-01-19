@@ -9,7 +9,7 @@ const ProductCard = ({ product }) => {
   } = product;
 
   const {
-    totalPrice, totalQuantities, cartItems, setShowCart, toggleCartItemQuantity, onRemove,
+    toggleCartItemQuantity, onRemove,
   } = useStateContext();
 
   return (

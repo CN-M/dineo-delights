@@ -3,7 +3,7 @@ import { useStateContext } from '../../context/StateContext';
 
 const SingleFeature = ({ product }) => {
   const {
-    decQty, incQty, qty, onAdd, setShowCart,
+    decQty, incQty, qty, onAdd,
   } = useStateContext();
 
   const {
