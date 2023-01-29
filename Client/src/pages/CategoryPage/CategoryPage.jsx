@@ -1,5 +1,6 @@
 /* eslint-disable no-unused-vars */
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { client } from '../../lib/Client';
 import { useStateContext } from '../../context/StateContext';
 import Header from '../../components/Header';
@@ -10,7 +11,8 @@ import Footer from '../../components/Footer';
 import Loading from '../../components/Loading';
 
 const CategoryPage = () => {
-  const path = window.location.pathname.split('/')[2];
+  // const path = window.location.pathname.split('/')[2];
+  const { slug } = useParams();
   const [categoryData, setCategoryData] = useState([]);
 
   const {
@@ -19,7 +21,7 @@ const CategoryPage = () => {
   } = useStateContext();
 
   useEffect(() => {
-    const QUERY = `*[count((category[]->categorySlug.current)[@ in ["${path}"]]) > 0] {
+    const QUERY = `*[count((category[]->categorySlug.current)[@ in ["${slug}"]]) > 0] {
       ...,
       category[]-> {
         categoryName,
@@ -57,7 +59,7 @@ const CategoryPage = () => {
                 isLoading
                   ? <Loading />
                   : (
-                    <ProductGrid heading={`${path}`} productData={categoryData}/>
+                    <ProductGrid heading={`${slug}`} productData={categoryData}/>
                   )
               }
             </div>

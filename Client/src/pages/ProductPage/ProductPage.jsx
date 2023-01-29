@@ -1,6 +1,7 @@
 /* eslint-disable no-unused-vars */
 import './Product.scss';
 import { useState, useEffect } from 'react';
+import { useParams } from 'react-router-dom';
 import { useStateContext } from '../../context/StateContext';
 import { client } from '../../lib/Client';
 import Header from '../../components/Header';
@@ -13,7 +14,8 @@ import Loading from '../../components/Loading';
 import ShoppingCart from '../../components/A_SubComponents/ShoppingCart/ShoppingCart';
 
 const ProductPage = () => {
-  const path = window.location.pathname.split('/')[2];
+  // const path = window.location.pathname.split('/')[2];
+  const { slug } = useParams();
   const [productData, setProductData] = useState([]);
   const [categoryData, setCategoryData] = useState([]);
 
@@ -21,7 +23,7 @@ const ProductPage = () => {
 
   useEffect(() => {
     const getData = async () => {
-      const QUERY = `*[_type == "product" && slug.current == "${path}"] {
+      const QUERY = `*[_type == "product" && slug.current == "${slug}"] {
         ...,
         category[]->
       }`;
