@@ -32,7 +32,6 @@ const CategoryPage = () => {
     const getData = async () => {
       const response = await client.fetch(QUERY);
       setCategoryData(response);
-      console.log(response[0].category[0])
       setIsLoading(false);
     };
 

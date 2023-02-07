@@ -31,11 +31,6 @@ const Sidebar = () => {
   const sidebarActive = isSideBarActive ? 'active' : '';
   const sideBarClasses = `sidebar has-scrollbar ${sidebarActive}`;
 
-  const handleAccordian = (e) => {
-    e.target.nextElementSibling.classList.toggle('active');
-    e.target.classList.toggle('active');
-  };
-
   return (
     <div className={sideBarClasses} data-mobile-menu>
       <div className="sidebar-category">
@@ -48,7 +43,7 @@ const Sidebar = () => {
         <ul className="sidebar-menu-category-list">
           {
             categoryData?.map((object, i) => (
-              <SideBarCategory key={i} category={object} handleAccordian={handleAccordian} />
+              <SideBarCategory key={i} category={object} />
             ))
           }
         </ul>

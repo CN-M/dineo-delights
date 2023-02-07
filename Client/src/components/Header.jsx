@@ -70,13 +70,22 @@ const Header = () => {
   const mobileActive = isMobileActive ? 'active' : '';
   const mobileClasses = `mobile-navigation-menu has-scrollbar ${mobileActive}`;
 
-  const handleAccordian = (e) => {
-    const sibling = e.target.nextElementSibling.classList;
-    const current = e.target.classList;
-    sibling.toggle('active');
-    current.toggle('active');
-  };
+  // const handleAccordian = (e) => {
+  //   const sibling = e.target.nextElementSibling.classList;
+  //   const current = e.target.classList;
+  //   sibling.toggle('active');
+  //   current.toggle('active');
+  // };
 
+  const [accordianActive1, setAccordian1Active] = useState(false)
+  const [accordianActive2, setAccordian2Active] = useState(false)
+  const [accordianActive3, setAccordian3Active] = useState(false)
+  const [accordianActive4, setAccordian4Active] = useState(false)
+
+  const accordianClasses1 = `${accordianActive1 ? 'active' : ''}`
+  const accordianClasses2 = `${accordianActive2 ? 'active' : ''}`
+  const accordianClasses3 = `${accordianActive3 ? 'active' : ''}`
+  const accordianClasses4 = `${accordianActive4 ? 'active' : ''}`
   return (
     <header>
       <div className="header-top">
@@ -308,14 +317,18 @@ const Header = () => {
           </li>
 
           <li className="menu-category">
-            <button className="accordion-menu" onClick={handleAccordian} data-accordion-btn>
+            <button className={`accordion-menu ${accordianClasses1}`} id='1' onClick={() => setAccordian1Active((current) => !current)} data-accordion-btn>
+            {/* <button className="accordion-menu" data-accordion-btn> */}
               <p className="menu-title">Clothing</p>
               <div>
-                <ion-icon name="add-outline" className="add-icon" />
-                {/* <ion-icon name="remove-outline" className="remove-icon" /> */}
+                {
+                  accordianClasses1 !== 'active'
+                  ? <ion-icon name="add-outline" className="add-icon" />
+                  :<ion-icon name="remove-outline" className="remove-icon" />
+                }
               </div>
             </button>
-            <ul className="submenu-category-list" data-accordion>
+            <ul className={`submenu-category-list ${accordianClasses1}`} id='1' data-accordion>
               {
                 clothingData?.map((object, i) => (
                   <SubMenuCategory key={i} category={object} />
@@ -326,14 +339,18 @@ const Header = () => {
           </li>
 
           <li className="menu-category">
-            <button className="accordion-menu" onClick={handleAccordian} data-accordion-btn>
+            <button className={`accordion-menu ${accordianClasses2}`} id='2' onClick={() => setAccordian2Active((current) => !current)} data-accordion-btn>
+            {/* <button className="accordion-menu" data-accordion-btn> */}
               <p className="menu-title">Accesories</p>
               <div>
-                <ion-icon name="add-outline" className="add-icon" />
-                {/* <ion-icon name="remove-outline" className="remove-icon" /> */}
+                {
+                  accordianClasses2 !== 'active'
+                  ? <ion-icon name="add-outline" className="add-icon" />
+                  :<ion-icon name="remove-outline" className="remove-icon" />
+                }
               </div>
             </button>
-            <ul className="submenu-category-list" data-accordion>
+            <ul className={`submenu-category-list ${accordianClasses2}`} id='2' data-accordion>
               {
                 accessoriesData?.map((object, i) => (
                   <SubMenuCategory key={i} category={object} />
@@ -344,14 +361,18 @@ const Header = () => {
           </li>
 
           <li className="menu-category">
-            <button className="accordion-menu" onClick={handleAccordian} data-accordion-btn>
+            <button className={`accordion-menu ${accordianClasses3}`} id='3' onClick={() => setAccordian3Active((current) => !current)} data-accordion-btn>
+            {/* <button className="accordion-menu" data-accordion-btn> */}
               <p className="menu-title">Electronics</p>
               <div>
-                <ion-icon name="add-outline" className="add-icon" />
-                {/* <ion-icon name="remove-outline" className="remove-icon" /> */}
+                {
+                  accordianClasses3 !== 'active'
+                  ? <ion-icon name="add-outline" className="add-icon" />
+                  :<ion-icon name="remove-outline" className="remove-icon" />
+                }
               </div>
             </button>
-            <ul className="submenu-category-list" data-accordion>
+            <ul className={`submenu-category-list ${accordianClasses3}`} id='3' data-accordion>
               {
                 electronicsData?.map((object, i) => (
                   <SubMenuCategory key={i} category={object} />
@@ -362,14 +383,18 @@ const Header = () => {
           </li>
 
           <li className="menu-category">
-            <button className="accordion-menu" onClick={handleAccordian} data-accordion-btn>
+            <button className={`accordion-menu ${accordianClasses4}`} id='4' onClick={() => setAccordian4Active((current) => !current)} data-accordion-btn>
+            {/* <button className="accordion-menu" data-accordion-btn> */}
               <p className="menu-title">Footwear</p>
               <div>
-                <ion-icon name="add-outline" className="add-icon" />
-                {/* <ion-icon name="remove-outline" className="remove-icon" /> */}
+                {
+                  accordianClasses4 !== 'active'
+                  ? <ion-icon name="add-outline" className="add-icon" />
+                  :<ion-icon name="remove-outline" className="remove-icon" />
+                }
               </div>
             </button>
-            <ul className="submenu-category-list" data-accordion>
+            <ul className={`submenu-category-list ${accordianClasses4}`} id='4' data-accordion>
               {
                 footwearData?.map((object, i) => (
                   <SubMenuCategory key={i} category={object} />

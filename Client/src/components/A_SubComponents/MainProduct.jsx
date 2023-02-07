@@ -9,6 +9,8 @@ const MainProduct = ({ product }) => {
     category,
   } = product;
 
+
+
   return (
     <div className="showcase">
       <div className="showcase-banner">
@@ -16,7 +18,7 @@ const MainProduct = ({ product }) => {
         imgSrc?.length > 1
           ? (
             <>
-              <img src={urlFor(imgSrc[0]).url()} alt={slug.current} width="300" className="product-img default" />
+              <img onClick={() => console.log('Clicoed')} src={urlFor(imgSrc[0]).url()} alt={slug.current} width="300" className="product-img default" />
               <img src={urlFor(imgSrc[1]).url()} alt={slug.current} width="300" className="product-img hover" />
             </>
           )
