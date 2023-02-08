@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useStateContext } from '../context/StateContext';
 import logo from '../assets/images/logo/vite.svg';
+// import logo from '../assets/images/logo/Dineo-delights-logo.jpeg';
 
 import PanelListItem from './A_SubComponents/PanelListItem';
 import DropDownItem from './A_SubComponents/DropDownItem';

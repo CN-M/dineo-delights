@@ -1,14 +1,16 @@
-import ctaBanner from '../assets/images/cta-banner.jpg';
+// import ctaBanner from '../assets/images/cta-banner.jpg';
+import ctaBanner from '../assets/images/logo/Dineo-delights-logo.jpeg';
+// import ctaBanner from '../assets/images/logo/luxurious-garb-logo.jpeg';
 
 const CTA = () => (
   <div className="cta-container">
     <img src={ctaBanner} alt="summer collection" className="cta-banner" />
-    <a href="/" className="cta-content">
+    {/* <a href="/" className="cta-content">
       <p className="discount">Our Best Selection Yet!</p>
       <h2 className="cta-title">Summer collection</h2>
       <p className="cta-text">Starting @ R110</p>
       <button className="cta-btn">Shop now</button>
-    </a>
+    </a> */}
   </div>
 );
 
