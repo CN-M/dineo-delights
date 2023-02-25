@@ -20,41 +20,19 @@ const Header = () => {
     const getData = async () => {
       const QUERY = '*[_type == "category"]';
       const categoryData = await client.fetch(QUERY);
-
       const accessories = ['glasses-and-lens', 'hat-and-caps', 'fragrances'];
-      const accData = [];
-
       const electronics = ['watch'];
-      const eleData = [];
-
       const clothing = ['shirts', 'winter-wear', 'jacket', 'shorts-and-jeans', 'dress-and-frock'];
-      const clothData = [];
-
       const footwear = ['shoes'];
-      const footData = [];
-
-      for (let i = 0; i < categoryData.length; i++) {
-        const testSubject = categoryData[i].categorySlug.current;
-        if (accessories.includes(testSubject)) {
-          accData.push(categoryData[i]);
-        }
-        if (electronics.includes(testSubject)) {
-          eleData.push(categoryData[i]);
-        }
-        if (clothing.includes(testSubject)) {
-          clothData.push(categoryData[i]);
-        }
-        if (footwear.includes(testSubject)) {
-          footData.push(categoryData[i]);
-        }
-      }
-
+      const accData = categoryData.filter((data) => accessories.includes(data.categorySlug.current));
+      const eleData = categoryData.filter((data) => electronics.includes(data.categorySlug.current));
+      const clothData = categoryData.filter((data) => clothing.includes(data.categorySlug.current));
+      const footData = categoryData.filter((data) => footwear.includes(data.categorySlug.current));
       setAccessoriesData(accData);
       setElectronicsData(eleData);
       setClothingData(clothData);
       setFootwearData(footData);
     };
-
     getData();
   }, []);
 
