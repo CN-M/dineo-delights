@@ -5,6 +5,7 @@ import CategoryPage from './pages/CategoryPage/CategoryPage';
 import ProductPage from './pages/ProductPage/ProductPage';
 import CartPage from './pages/CartPage/CartPage';
 import Success from './pages/Success/Success';
+import Manage from './pages/Manage/Manage';
 import AddressPage from './pages/AddressPage/AddressPage';
 
 const App = () => (
@@ -16,6 +17,7 @@ const App = () => (
       <Route path="/cart" element={<CartPage />} />
       <Route path="/address" element={<AddressPage />} />
       <Route path="/success" element={<Success />} />
+      <Route path="/manage" element={<Manage />} />
     </Routes>
   </Router>
 );
