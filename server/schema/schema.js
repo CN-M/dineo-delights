@@ -1,8 +1,5 @@
-/* eslint-disable no-use-before-define */
-/* eslint-disable no-unused-vars */
-// eslint-disable-next-line import/no-extraneous-dependencies
-const { faker } = require('@faker-js/faker');
-const { slugify } = require('slugify');
+const { faker } = require("@faker-js/faker");
+const { slugify } = require("slugify");
 
 const {
   GraphQLInputObjectType,
@@ -14,16 +11,16 @@ const {
   GraphQLNonNull,
   GraphQLBoolean,
   GraphQLInt,
-} = require('graphql');
+} = require("graphql");
 
-const Product = require('../models/Product');
-const Category = require('../models/Category');
-const DealOfTheWeek = require('../models/DealOfTheWeek');
-const Order = require('../models/Order');
+const Product = require("../models/Product");
+const Category = require("../models/Category");
+const DealOfTheWeek = require("../models/DealOfTheWeek");
+const Order = require("../models/Order");
 
 // Category Type
 const CategoryType = new GraphQLObjectType({
-  name: 'Category',
+  name: "Category",
   fields: () => ({
     id: { type: GraphQLID },
     name: { type: GraphQLString },
@@ -34,7 +31,7 @@ const CategoryType = new GraphQLObjectType({
 
 // Product Type
 const ProductType = new GraphQLObjectType({
-  name: 'Product',
+  name: "Product",
   fields: () => ({
     id: { type: GraphQLID },
     imgSrc: { type: new GraphQLList(GraphQLString) },
@@ -58,7 +55,7 @@ const ProductType = new GraphQLObjectType({
 
 // DealOfTheWeek Type
 const DealOfTheWeekType = new GraphQLObjectType({
-  name: 'DealOfTheWeek',
+  name: "DealOfTheWeek",
   fields: () => ({
     id: { type: GraphQLID },
     // AAdd Date Time Type
@@ -75,7 +72,7 @@ const DealOfTheWeekType = new GraphQLObjectType({
 
 // Order Type
 const OrderType = new GraphQLObjectType({
-  name: 'Order',
+  name: "Order",
   fields: () => ({
     id: { type: GraphQLID },
     cost: { type: GraphQLInt },
@@ -91,7 +88,7 @@ const OrderType = new GraphQLObjectType({
 });
 
 const ProductInputType = new GraphQLInputObjectType({
-  name: 'ProductInput',
+  name: "ProductInput",
   fields: () => ({
     id: { type: GraphQLID },
     imgSrc: { type: new GraphQLList(GraphQLString) },
@@ -108,7 +105,7 @@ const ProductInputType = new GraphQLInputObjectType({
 
 // Queries
 const query = new GraphQLObjectType({
-  name: 'Query',
+  name: "Query",
   fields: {
     // Get All Categories
     allCategories: {
@@ -125,8 +122,10 @@ const query = new GraphQLObjectType({
       resolve(parents, args) {
         const { slug } = args;
         const category = Category.findOne({ slug });
-        return Product.find({ category: category.id })
-          .populate('category', 'name icon');
+        return Product.find({ category: category.id }).populate(
+          "category",
+          "name icon"
+        );
       },
     },
 
@@ -144,8 +143,7 @@ const query = new GraphQLObjectType({
       args: { slug: { type: GraphQLString } },
       resolve(parents, args) {
         const { slug } = args;
-        return Product.findOne({ slug })
-          .populate('category', 'name');
+        return Product.findOne({ slug }).populate("category", "name");
       },
     },
 
@@ -163,8 +161,7 @@ const query = new GraphQLObjectType({
       args: { slug: { type: GraphQLString } },
       resolve(parents, args) {
         const { slug } = args;
-        return Order.findOne({ slug })
-          .populate('product', 'name price');
+        return Order.findOne({ slug }).populate("product", "name price");
       },
     },
 
@@ -177,13 +174,12 @@ const query = new GraphQLObjectType({
         return DealOfTheWeek.findById(id);
       },
     },
-
   },
 });
 
 // Mutations
 const mutation = new GraphQLObjectType({
-  name: 'Mutation',
+  name: "Mutation",
   fields: {
     // Add a Category
     addCategory: {
@@ -236,7 +232,7 @@ const mutation = new GraphQLObjectType({
               icon,
             },
           },
-          { new: true },
+          { new: true }
         );
       },
     },
@@ -268,7 +264,7 @@ const mutation = new GraphQLObjectType({
     createProducts: {
       type: new GraphQLList(ProductType),
       resolve(parent, args) {
-        const categories = ['Hair', 'Shoes', 'Electronics', 'Food'];
+        const categories = ["Hair", "Shoes", "Electronics", "Food"];
         const products = [];
         for (let i = 1; i <= 10; i++) {
           const name = faker.commerce.productName();
@@ -292,7 +288,7 @@ const mutation = new GraphQLObjectType({
               price,
               categoryId,
               description,
-            }).save(),
+            }).save()
           );
         }
         return Promise.all(products);
@@ -354,7 +350,7 @@ const mutation = new GraphQLObjectType({
               description,
             },
           },
-          { new: true },
+          { new: true }
         );
       },
     },
@@ -373,7 +369,7 @@ const mutation = new GraphQLObjectType({
           cost,
           nameOfCustomer,
           items,
-          status: 'pending',
+          status: "pending",
         }).save();
       },
     },
@@ -394,7 +390,7 @@ const mutation = new GraphQLObjectType({
               status,
             },
           },
-          { new: true },
+          { new: true }
         );
       },
     },
@@ -443,7 +439,7 @@ const mutation = new GraphQLObjectType({
               deadline,
             },
           },
-          { new: true },
+          { new: true }
         );
       },
     },

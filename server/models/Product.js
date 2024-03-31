@@ -1,12 +1,10 @@
-const mongoose = require('mongoose');
+const mongoose = require("mongoose");
 
 const ProductSchema = new mongoose.Schema({
   name: {
     type: String,
   },
-  imgSrc: [
-    { type: String },
-  ],
+  imgSrc: [{ type: String }],
   slug: { type: String },
   onSale: { type: Boolean },
   isProductNew: { type: Boolean },
@@ -15,11 +13,11 @@ const ProductSchema = new mongoose.Schema({
   price: { type: Number },
   category: {
     type: mongoose.Schema.Types.ObjectId,
-    ref: 'Category',
+    ref: "Category",
   },
   description: {
     type: String,
   },
 });
 
-module.exports = mongoose.model('Product', ProductSchema);
+module.exports = mongoose.model("Product", ProductSchema);
