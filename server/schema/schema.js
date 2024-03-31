@@ -1,5 +1,5 @@
 const { faker } = require("@faker-js/faker");
-const { slugify } = require("slugify");
+const slugify = require("slugify");
 
 const {
   GraphQLInputObjectType,
@@ -193,7 +193,7 @@ const mutation = new GraphQLObjectType({
         return new Category({
           icon,
           name,
-          // slug: slugify(name),
+          slug: slugify(name.toLowerCase()),
         }).save();
       },
     },
