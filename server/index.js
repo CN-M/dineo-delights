@@ -1,27 +1,34 @@
-const express = require('express');
-const { graphqlHTTP } = require('express-graphql');
-const cors = require('cors');
-require('dotenv').config();
-require('colors');
+const express = require("express");
+const { graphqlHTTP } = require("express-graphql");
+const cors = require("cors");
+require("dotenv").config();
+require("colors");
 
 const { PORT, NODE_ENV } = process.env;
 const Port = PORT || 5000;
 
-const schema = require('./schema/schema');
-const connectDB = require('./config/db');
+const schema = require("./schema/schema");
+const connectDB = require("./config/db");
 
 const app = express();
 
-// Connect Database
 connectDB();
 
 app.use(cors());
 
 // GrapQL endpoint
-app.use('/graphql', graphqlHTTP({
-  schema,
-  graphiql: NODE_ENV === 'development',
-}));
+app.use(
+  "/graphql",
+  graphqlHTTP({
+    schema,
+    graphiql: NODE_ENV === "development",
+  })
+);
 
 // Listen
-app.listen(Port, console.log(`Serving running on http://localhost:${Port}/graphql`.cyan.underline.bold));
+app.listen(
+  Port,
+  console.log(
+    `Serving running on http://localhost:${Port}/graphql`.cyan.underline.bold
+  )
+);
