@@ -94,4 +94,3 @@ To run the application in development mode, use the following commands:
 ## 📄 License
 
 This project is licensed under the **MIT License**. Goodluck navigating my sphagetti code.
-```
